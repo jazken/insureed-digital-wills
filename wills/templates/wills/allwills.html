@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+    <title>Insureed - Your Digital Will Custodian - ACTUAL</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-kit/1.1.0/css/material-kit.css">
+  </head>
+
+  <header>
+      <div class="collapse bg-dark" id="navbarHeader">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-8 col-md-7 py-4">
+                <h4 class="text-white">About</h4>
+                <p class="text-white">Insureed is a digital will custodian - built during Hedera Hashgraph Hackathon.</div>
+              <div class="col-sm-4 offset-md-1 py-4">
+                <h4 class="text-white">Contact</h4>
+                <ul class="list-unstyled">
+                  <li><a href="#" class="text-white">Create Will</a></li>
+                  <li><a href="#" class="text-white">Manage Wills</a></li>
+                  <li><a href="{% url 'finalwill' %}" class="text-white">View Final Will</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="navbar navbar-dark bg-dark shadow-sm">
+          <div class="container d-flex justify-content-between">
+            <a href="{% url 'home' %}" class="navbar-brand d-flex align-items-center">
+              <img src="https://icodog.io/wp-content/uploads/2018/09/hashgraph-icodog-300x300.png" width="50" height="50" />
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          </div>
+        </div>
+  </header>
+  
+  
+
+
+
+  <body class="bg-light">
+
+    <div class="container">
+      <div class="py-5 text-center">
+        
+        <h2>Insureed - List of Wills</h2>
+        <p class="lead">You can create users that you want to share your will with.</p>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12 order-md-1">
+          <h4 class="mb-3">List of Wills</h4>
+          <table class="table table-hover">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Date & Time Created</th>
+                <th scope="col">Signed</th>
+                <th scope="col">Lawyer</th>
+                <th scope="col">Executor</th>
+                <th scope="col">Beneficiary</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              {% for will in wills.all %}
+              
+              <tr>
+                <th scope="row">{{ will.willno }}</th>
+                
+                <td>{{ will.datesigned }}</td>
+                <td>2:15pm</td>
+                <td><button type="button" class="btn btn-warning" data-toggle="collapse" data-target="#multieg1" aria-expanded="false" aria-controls="multieg1">Create</button></td>
+                <td><button type="button" class="btn btn-warning" data-toggle="collapse" data-target="#multieg1" aria-expanded="false" aria-controls="multieg1">Create</button></td>
+                <td><button type="button" class="btn btn-warning" data-toggle="collapse" data-target="#multieg1" aria-expanded="false" aria-controls="multieg1">Create</button></td>
+              </tr>
+              {% endfor %}
+
+            </tbody>
+          </table>
+
+        </div>
+        <div class="col-md-12 order-md-1 collapse multi-collapse" id="multieg1">
+          <div class="card-body">
+
+          <h4 class="mb-3">Create User</h4>
+          <form class="needs-validation" novalidate>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="firstName">First name</label>
+                <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+                <div class="invalid-feedback">
+                  Valid first name is required.
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="lastName">Last name</label>
+                <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+                <div class="invalid-feedback">
+                  Valid last name is required.
+                </div>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="email">Email <span class="text-muted">(required)</span></label>
+              <input type="email" class="form-control" id="email" placeholder="you@example.com">
+              <div class="invalid-feedback">
+                Please enter a valid email address for sending them their account.
+              </div>
+            </div>
+            
+            <hr class="mb-4">
+            <button class="btn btn-primary btn-lg btn-block" type="submit">CREATE USER</button>
+          </form>
+        
+        </div>
+        </div>
+      </div>
+
+      <footer class="my-5 pt-5 text-muted text-center text-small">
+        <p class="mb-1">&copy; {% now "Y" %} Insureed <i>by WillSG</i></p>
+        
+      </footer>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.4/holder.js"></script>
+    <script>
+      // Example starter JavaScript for disabling form submissions if there are invalid fields
+      (function() {
+        'use strict';
+
+        window.addEventListener('load', function() {
+          // Fetch all the forms we want to apply custom Bootstrap validation styles to
+          var forms = document.getElementsByClassName('needs-validation');
+
+          // Loop over them and prevent submission
+          var validation = Array.prototype.filter.call(forms, function(form) {
+            form.addEventListener('submit', function(event) {
+              if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+              form.classList.add('was-validated');
+            }, false);
+          });
+        }, false);
+      })();
+    </script>
+  </body>
+</html>
